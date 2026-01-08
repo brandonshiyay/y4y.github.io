@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 Man, I suck.
 
 For the first time, I've decided to actually include the challenge files. Hope the organizers don't DMCA me.
@@ -507,3 +508,4 @@ Yep, automation is the way.
 ### Flag
 
 flag{4ll_7h3_w4y_70_7h3_d33p357_v4l1d4710n}
+{% endraw %}

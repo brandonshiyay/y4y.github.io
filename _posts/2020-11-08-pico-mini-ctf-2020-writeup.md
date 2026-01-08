@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 This will be the write up for 3 out of 5 problems in the recently concluded Picomini CTF 2020. 'Web Gauntlet' from Web category, 'OPT' from Reverse category, and 'Guessing Game 1' from Binary Exploitation category.
 
 ## Web Gauntlet (Web)
@@ -561,3 +562,4 @@ picoCTF{r0p_y0u_l1k3_4_hurr1c4n3_580891753d5e9212}
 ## Conclusion
 
 This is harder than the usual Pico challenges, and there were only 5 if the sanity check one is not counted. The ROP one was cool and I learned a lot, at least now I know being a script kiddie won't bring me anywhere. If any part of the Pwn write up is confusing then I can't help, I'm just this bad and you should probably check out pwn college or something.
+{% endraw %}

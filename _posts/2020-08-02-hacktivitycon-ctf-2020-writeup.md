@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 So I only did some problems, most of then being web challenges. I had to take my OSCP exam so didn't spend too much time on this CTF. I mean I don't spend much time on all CTFs anyway.
 
 ## Misc
@@ -243,3 +244,4 @@ flag{kids_please_sanitize_your_inputs}
 ## Conclusion
 
 Those are the challenges I think worth explaining. I also did Waffle web challenge, but I decided to go full script kiddie and used sqlmap so it's just not worthy saying. LDAP injection is pretty cool, I think it's the first time I have ever seen a LDAP problem in a CTF. The php cgi one is also fun, I never knew such thing existed. But anyway, that's all.
+{% endraw %}

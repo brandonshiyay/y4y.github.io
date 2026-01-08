@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Competition Info
 
 https://grimmcon.ctf.games
@@ -180,3 +181,4 @@ idk
 ## Conclusion
 
 As mentioned above, when I was doing 'stacked', the website seemed down. I checked it afterwards and seems like the entire server is just gone, and I was unable to do more challenges. So that will be all.
+{% endraw %}

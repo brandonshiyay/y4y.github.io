@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 The same write should also be up on the Pwnie Island's team[blog](https://www.pwnie-island.org/).
 
 Challenge address, https://2020.redpwn.net/challs
@@ -84,3 +85,4 @@ which works like a charm. Next let's do some more dangerous payload, to make sur
 atob() is another JS function which decodes base64 encoded string, and note the payload I put above is using the address of localhost instead of the public IP machine I owned. After generating the message and sending the url to admin, I got the flag.
 
 107.178.229.206 - - [26/Jun/2020 11:37:29] "GET /cookie.php?c=flag=flag{54n1t1z4t10n_k1nd4_h4rd} HTTP/1.1" 404 -
+{% endraw %}

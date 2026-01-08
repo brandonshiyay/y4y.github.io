@@ -16,6 +16,7 @@ wordpress_id: 485
 parent_id: 0
 ---
 
+{% raw %}
 ## Public Contests
 
 Notable placements:
@@ -45,3 +46,4 @@ List of contests I served as Judge
 | Protocol Name | Findings | Report |
 | --- | --- | --- |
 | MoatV3 | 2 Critical/2 High/6 Medium | https://getfailsafe.com/the-moats-v3-smart-contract-audit |
+{% endraw %}

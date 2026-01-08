@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Introduction
 
 File inclusion and directory traversal is always chained together. Depends on the application those vulnerabilities can do different damages. From file disclosure to code execution.
@@ -77,3 +78,4 @@ The header above is saying send the file from 0 byte to 4096 bytes. This can sol
 Not just file inclusion and directory traversal, XXE can also lead to file disclosure, but I believe XXE can list files? Sometimes it can, I am sure of that.
 
 Maybe I will update this when I learn more about Linux systems, I don't know what files to look at on Windows systems and I don't really want to know either.
+{% endraw %}

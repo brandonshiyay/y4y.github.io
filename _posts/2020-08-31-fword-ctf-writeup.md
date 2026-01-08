@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["CTF"]
 ---
 
+{% raw %}
 A pretty good CTF event. I only did the easiest problems in web, reverse, bash, and forensic category.
 
 # Writeups
@@ -370,3 +371,4 @@ while 1:
 # Conclusion
 
 Finally some PHP in web category! I was overwhelmed with all those XSS in recent CTFs, probably because I suck at JavsScript. I am also learning reverse recently, I don't think the knowledge I learned helped much this event, but I am sure it will pay off.
+{% endraw %}

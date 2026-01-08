@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Introduction
 
 Natas is a web challenge series from OverTheWire.
@@ -273,3 +274,4 @@ grep -i ;whoami; echo dictionary.txt
 ```
 
 The rest is the usual procedure, get the password and advance to next level.
+{% endraw %}

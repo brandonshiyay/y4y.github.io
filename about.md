@@ -16,6 +16,7 @@ wordpress_id: 23
 parent_id: 0
 ---
 
+{% raw %}
 Twitter @brandon_shi
 
 Github @brandonshiyay
@@ -27,3 +28,4 @@ Discord @brandio#3418
 [Get in touch!](#)
 
 ---
+{% endraw %}

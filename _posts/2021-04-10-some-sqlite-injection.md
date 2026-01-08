@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## About this post
 
 Maybe it's just a coincidence, but I have been noticing a lot of SQLite Injections lately. From last year's Pico Mini Competition, to the recent concluded Pico 2021 and Angstrom CTF, they all have some degrees of SQLite filter bypassing problems in the event. I want to take the chance and talk about some basic bypassing technique. Why basic? Because I don't how the advanced bypassing looks like.
@@ -153,3 +154,4 @@ One good example is the Startup Company challenge from Pico CTF 2021. Where you 
 ## Conclusion
 
 This basically concludes all the SQLite tricks I know, it should be somewhat helpful. From now on, all the CTF write-ups will be on [our team's write-up website](https://www.ctfwriteup.com/), so check that out. I will mostly be posting some technical stuff, and the next post will be about Cobalt Strike. I will analyze how Cobalt Strike sends malicious payload to target machine, and how the beacon object works in Cobalt Strike, stay tuned.
+{% endraw %}

@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 To be fair, the attack chain is pretty straight forward. I kinda hope all the other vulnerabilities are easy to analyze like this one…
 
 ## log4j
@@ -179,3 +180,4 @@ and hey, reflection also works. But providing parameters is a hell.
 ## Conclusion
 
 I wanted to write more, but I want to sleep RIGHT NOW so if there is more, probably will be saved for later. Hope you learned something new like I did, idk, idc. Oh yeah, and hope I didn't spread false knowledge.
+{% endraw %}

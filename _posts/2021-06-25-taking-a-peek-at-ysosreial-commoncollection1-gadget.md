@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Preface
 
 I finally got my shit together and decided to sit down and learn Java deserialization. So, I decided it'd be the best way to learn by analyzing the PoCs online, and ysoserial just happens to be one. I will probably analyze all the CommonCollections gadgets first, then move onto the rests.
@@ -371,3 +372,4 @@ This one should be easy enough, it invokes `java.lang.Runtime.exec` with `"whoam
 ## Reference
 
 - https://blog.csdn.net/jameson_/article/details/80137016
+{% endraw %}

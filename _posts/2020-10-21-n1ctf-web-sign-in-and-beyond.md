@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 This will be my solution on the recent concluded N1CTF's easiest web challenge 'websign' which I couldn't even solve during the competition. I normally wouldn't bother post a blog but this time I felt I really had it in my hand and want to try again with the assistance of some writeups. Enjoy and hope you can learn something like I did.
 
 中文部分在底下
@@ -801,3 +802,4 @@ extract_key()
 ```
 
 我编程全是用英语学得, 所以中文写起来跟吃了屎一样. 不过考虑到也要回国了所以趁机熟悉一下. 原本以为我修炼了一段时间可以答大部分Web题了, 结果我还是图样, 还是要学习一个. 不过总体来说感觉还好, 我的思路都是正确的, 要是比赛时候多看两眼可能真的能蒙出来...
+{% endraw %}

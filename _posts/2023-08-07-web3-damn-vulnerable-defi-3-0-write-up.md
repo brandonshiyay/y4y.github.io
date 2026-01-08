@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Resources
 
 Challenge site: [https://www.damnvulnerabledefi.xyz/](https://www.damnvulnerabledefi.xyz/)
@@ -1130,3 +1131,4 @@ await player.sendTransaction({to: vault.address, data: rawData, gasLimit: 300000
 ## Conclusion
 
 I feel like I could’ve done better doing this write-up, but meh. Readers are also welcomed to ask question regarding the challenges @brandon_shi on Twitter, or X shall I say.
+{% endraw %}

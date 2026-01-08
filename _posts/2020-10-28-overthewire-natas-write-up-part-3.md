@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Introduction
 
 Natas is a web challenge series from OverTheWire.
@@ -523,3 +524,4 @@ Password:
 This `strcmp` function compares two strings, and returns an integer value.
 
 However, though, when it's comparing a string with an array, it will return NULL. We can pass an array in PHP by adding a square bracket like this:`passwd[]=1`. And that's it, that's the solution…
+{% endraw %}

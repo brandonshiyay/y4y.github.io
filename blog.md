@@ -16,6 +16,7 @@ wordpress_id: 4
 parent_id: 0
 ---
 
+{% raw %}
 ![](https://y4y.space/wp-content/uploads/2019/09/ti6.jpg?w=1024)
 
 *好魂我招*
@@ -27,3 +28,4 @@ parent_id: 0
 Get new content delivered directly to your inbox.
 
 [jetpack_subscription_form show_subscribers_total="false" button_on_newline="true" custom_font_size="16px" custom_border_radius="0" custom_border_weight="1" custom_padding="15" custom_spacing="10" submit_button_classes="has-text-color has-background-color has-background has-primary-background-color" email_field_classes="" show_only_email_and_button="true"]
+{% endraw %}

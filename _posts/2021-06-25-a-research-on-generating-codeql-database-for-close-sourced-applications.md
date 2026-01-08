@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Motivation
 
 I adore CodeQL a lot despite the fact that I have only been working with it for less than 3 months. It's so powerful at analyzing applications and it can save a tremendous amount time doing code review. However, nothing is perfect. There are a few downsides of CodeQL.
@@ -269,3 +270,4 @@ Who doesn't like traps?
 
 - https://testanull.com/build-codeql-db-without-source-code
 - https://paper.seebug.org/1324/
+{% endraw %}

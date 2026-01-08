@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 So Google CTF has concluded, and I was reading writeups for web challenges and hoping I can learn something new since I did not put too much time into it. Then I came across the challenge 'log-me-in'. It was an easy challenge, but I had some questions while read writeups for this one.
 
 Essentially the solution is to post an object to the login page to get a authentication bypass. At my first glance I thought it was MongoDB auth bypass. But after reading the given source code I realized it was MySQL. The final payloads from various writeups were like:
@@ -73,3 +74,4 @@ The first comparison requires no explanation, the second part though, is doing t
 This is probably my biggest lesson from this CTF, other than that, I also learnt how to be patient, read source code carefully, be skeptical, and the most importantly, use IDA for reverse challenges.
 
 That's it for this blog, hope you enjoy it. Next one should be some Jarvis OJ writeups.
+{% endraw %}

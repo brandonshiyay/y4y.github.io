@@ -16,6 +16,7 @@ parent_id: 0
 categories: ["Uncategorized"]
 ---
 
+{% raw %}
 ## Introduction
 
 Natas is a web challenge series from OverTheWire.
@@ -791,3 +792,4 @@ for i in range(32):
 
 sys.stdout.write(f'\nFound Password: {known_pass}\n')
 ```
+{% endraw %}
