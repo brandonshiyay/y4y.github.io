@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body class="layout-{{ page.layout | default: 'default' }}">
+    <header class="site-header">
+      <div class="shell">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <nav class="site-nav">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+          <a href="{{ '/blog/' | relative_url }}">Blog</a>
+          <a href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="shell">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <span>Built with Jekyll · {{ site.time | date: "%Y" }}</span>
+        <a href="{{ '/' | relative_url }}">Back to home</a>
+      </div>
+    </footer>
+  </body>
+</html>

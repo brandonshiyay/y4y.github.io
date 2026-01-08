@@ -1,0 +1,28 @@
+title: "y4y"
+description: "Security research notes, writeups, and build logs."
+baseurl: ""
+url: ""
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      render_with_liquid: false
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+      render_with_liquid: false
+exclude:
+  - export
+  - export-md
+  - scripts
+  - WordPress.2026-01-08.xml

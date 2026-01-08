@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <p class="eyebrow">Post</p>
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+      {% if page.categories %}
+        <span>{{ page.categories | join: ", " }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <a class="button ghost" href="{{ '/' | relative_url }}">Back to home</a>
+    {% if page.original_url %}
+      <a class="button ghost" href="{{ page.original_url }}">Original link</a>
+    {% endif %}
+  </footer>
+</article>

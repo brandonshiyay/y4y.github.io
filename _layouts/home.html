@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<section class="hero">
+  <p class="eyebrow">{{ site.description }}</p>
+  <h1 class="hero-title">{{ site.title }}</h1>
+  <p class="hero-subtitle">
+    Notes from exploit development, CTF writeups, and research threads.
+  </p>
+  <div class="hero-actions">
+    <a class="button primary" href="{{ '/about/' | relative_url }}">About me</a>
+    <a class="button ghost" href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
+  </div>
+</section>
+
+{{ content }}
+
+<section class="post-list">
+  <div class="section-header">
+    <h2>Latest posts</h2>
+    <span class="muted">{{ site.posts | size }} total</span>
+  </div>
+  <div class="post-grid">
+    {% for post in site.posts %}
+      <article class="post-card" style="--i: {{ forloop.index0 }};">
+        <div class="post-card-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%b %-d, %Y" }}
+          </time>
+          {% if post.categories %}
+            <span>{{ post.categories | join: ", " }}</span>
+          {% endif %}
+        </div>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+        <a class="post-card-link" href="{{ post.url | relative_url }}">Read more</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
