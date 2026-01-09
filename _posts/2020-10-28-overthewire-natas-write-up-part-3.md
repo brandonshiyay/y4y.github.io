@@ -33,7 +33,7 @@ This write up will show the necessary steps to get password.
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -140,7 +140,7 @@ Password: <input name="password"><br>
 
 It looks messy, but what it really does is just checking session IDs. In the comment we saw that the max session is just 640. So it means we can brute-force admin's session ID.
 
-```
+```python
 import requests
 import sys
 
@@ -176,7 +176,7 @@ The hex string above looks like it can be converted to ASCII.
 
 So now I see, the first number is the session ID, and the second string is the username I put in. Let's do the same brute-force but change a little bit code.
 
-```
+```python
 import requests
 import sys
 import binascii
@@ -205,7 +205,7 @@ After a while, it should return the HTTP response with the correspond password.
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -345,14 +345,14 @@ Then the code is calling `session_set_save_handler` to tell PHP how to interpret
 
 The problem appears in the `myread` function, notice when the session file exists, it simply read lines from the file. The next steps is probably better understandable by some examples:
 
-```
+```text
 name admin
 aaa bbb
 ```
 
 Imagine the above content is in the session file, the session object will then be:
 
-```
+```javascript
 session['name']='admin';
 sesion['aaa']='bbb';
 ```
@@ -375,7 +375,7 @@ This level is so tricky.
 
 Source:
 
-```
+```html
  <?
 session_start();
 
@@ -429,7 +429,7 @@ As you can see the 'Follow redirection' button means there is redirect. And if y
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -482,7 +482,7 @@ Submit this and get your password.
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->

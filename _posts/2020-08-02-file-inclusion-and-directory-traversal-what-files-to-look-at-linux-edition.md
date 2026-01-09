@@ -31,7 +31,7 @@ The best scenario for me, as an attacker is of course code execution, that's whe
 
 If by any chances, log files are accessible to the user, code execution can be achieved by modifying user agent in the HTTP request. It can be done using burp or curl. Change user agent to something like:
 
-```
+```php
 <?php system($_REQUEST['c']);?>
 ```
 

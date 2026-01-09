@@ -81,7 +81,7 @@ flag{gu3ss_u_f0und_m3}
 
 #### sol.js
 
-```
+```bash
 const zwsp = require('zwsp-steg');
 const fs = require('fs');
 const http = require('http');
@@ -127,7 +127,7 @@ There is really nothing exciting about this website, in the index page it asks y
 
 However, those test routes are calling some cached functions, and the cached functions also just returns "test".
 
-```
+```python
 @cache.cached(timeout=3)
 def _test0():
     return 'test'
@@ -179,7 +179,7 @@ flag{f1@sK_10rD}
 
 #### exp.py
 
-```
+```python
 #!/usr/bin/env python3
 
 import pickle

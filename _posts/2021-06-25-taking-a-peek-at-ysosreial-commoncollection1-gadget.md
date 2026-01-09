@@ -31,7 +31,7 @@ My first encounter with Java reflection is in the CVE-2021-21985, which I made a
 
 Below are some example codes for the reflection method.
 
-```
+```java
 Class cls = Runtime.class;
 // this will return all the public methods in Runtime
 Method[] methods = cls.getMethod();
@@ -63,7 +63,7 @@ Unlike it is in PHP, in Java, to serialize an object, it has to implement the `S
 
 Let's say the class `Person` is serializable:
 
-```
+```java
 class person implements Serializable{
 
     ...
@@ -82,7 +82,7 @@ class person implements Serializable{
 
 to serialize the class:
 
-```
+```java
 public class serialization_test {
 
     public static void main(String[] args) throws Exception{
@@ -108,7 +108,7 @@ Issues always appear when there is a `readObject` call since it is possible to c
 
 In `commons-collections-3.1\src\java\org\apache\commons\collections\map\TransformedMap.java`
 
-```
+```java
     public static Map decorate(Map map, Transformer keyTransformer, Transformer valueTransformer) {
         return new TransformedMap(map, keyTransformer, valueTransformer);
     }
@@ -118,7 +118,7 @@ In `commons-collections-3.1\src\java\org\apache\commons\collections\map\Transfor
 
 In `commons-collections-3.1\src\java\org\apache\commons\collections\functors\ConstantTransformer.java`
 
-```
+```java
 public class ChainedTransformer implements Transformer, Serializable {
 ...
 
@@ -137,7 +137,7 @@ public class ChainedTransformer implements Transformer, Serializable {
 
 In `commons-collections-3.1\src\java\org\apache\commons\collections\functors\InvokerTransformer.java`
 
-```
+```java
 public class InvokerTransformer implements Transformer, Serializable {
 
     ...
@@ -173,7 +173,7 @@ public class InvokerTransformer implements Transformer, Serializable {
 
 In `commons-collections-3.1\src\java\org\apache\commons\collections\functors\ChainedTransformer.java`
 
-```
+```java
 public class ChainedTransformer implements Transformer, Serializable {
 ...
     public ChainedTransformer(Transformer[] transformers) {
@@ -194,7 +194,7 @@ public class ChainedTransformer implements Transformer, Serializable {
 
 In `sun.reflect.annotation.AnnotationInvocationHandler`
 
-```
+```java
 class AnnotationInvocationHandler implements InvocationHandler, Serializable {
 ...
 
@@ -250,7 +250,7 @@ class AnnotationInvocationHandler implements InvocationHandler, Serializable {
 
 ### Sample Payload And Analysis
 
-```
+```java
 Transformer[] transformers = new Transformer[]{
     new ConstantTransformer(Runtime.class),
     new InvokerTransformer(
@@ -308,7 +308,7 @@ Let's analyze in the reverse order. So starting from the bottom.
 
 The very last part writes the serialized data to a file, nothing fancy here. The second last part:
 
-```
+```java
 Class cl = Class.forName("sun.reflect.annotation.AnnotationInvocationHandler");
 
 Constructor ctor = cl.getDeclaredConstructor(Class.class, Map.class);
@@ -318,7 +318,7 @@ Object instance = ctor.newInstance(Target.class, AfterTransformerMap);
 
 constructs an instance of the `AnnotationInvocationHandler` class, with the `Target.class` and `AfterTransformerMap` arguments. Upon the instance being deserialized and the `readObject` function call, it will trigger `AnnotationInvocationHandler.readObject`, and during the call, `setValue` function is called:
 
-```
+```java
                     memberValue.setValue(
                         new AnnotationTypeMismatchExceptionProxy(
                             value.getClass() + "[" + value + "]").setMember(
@@ -327,7 +327,7 @@ constructs an instance of the `AnnotationInvocationHandler` class, with the `Tar
 
 And it will trigger `checkSetValue` in `TransformedMap`:
 
-```
+```java
     protected Object checkSetValue(Object value) {
         return valueTransformer.transform(value);
     }
@@ -341,7 +341,7 @@ First `Transformer` is `ConstantTransformer`, and no matter what arguments are p
 
 Second `Transformer` is `InvokerTransformer`, and from the `Runtime.class` argument:
 
-```
+```java
         try {
             Class cls = Runtime.class;
             Method method = cls.getMethod("getMethod", new Class[...]);
@@ -354,7 +354,7 @@ Essentially it returns `Runtime.class.getMethod("getRuntime")`. And for some rea
 
 I guess you can see where this is going. And now the third:
 
-```
+```java
         try {
             Class cls = java.lang.reflect.Method;
             Method method = cls.getMethod("invoke", new Class[...]);

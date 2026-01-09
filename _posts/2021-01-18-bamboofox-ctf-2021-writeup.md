@@ -33,7 +33,7 @@ They gave us the source code, yay.
 
 http://chall.ctf.bamboofox.tw:13377/?source
 
-```
+```html
  <?php
 error_reporting(0);
 isset($_GET['source']) && die(highlight_file(__FILE__));
@@ -163,7 +163,7 @@ There are three files in the zip file.
 
 #### magic.v
 
-```
+```verilog
 module magic(
   input clk,
   input rst,
@@ -184,7 +184,7 @@ endmodule
 
 #### chall.v
 
-```
+```verilog
 `include "./magic.v"
 
 module chall(
@@ -217,7 +217,7 @@ endmodule
 
 #### t_chall.v
 
-```
+```verilog
 `timescale 1ns/10ps
 
 `include "./chall.v"
@@ -307,7 +307,7 @@ It's exactly a flag checker, and it does a bunch of bit manipulations on each ch
 
 So when a character is being checked, it takes its ASCII value as input, let's say letter `l` which has the binary representation of `01101100`. Then the input reader read the input in little endian format, so let's also change that. Now the input is `00110110`, note I just reverse the binary string. Next in the `chall.v`, it takes the every two bit in the input and assign them to `val0`, `val1`, `val2`, and `val3`. But the two bit reading format is also little endian, which means from right to left, so the order correspond to the value `vals` are `00`, `11`, `10`, `01`. If you look at the un-reversed bit string again, we can put the slice into the format of
 
-```
+```ini
 val0 = bit_string[6:8]
 val1 = bit_string[4:6]
 val2 = bit_string[2:4]
@@ -316,7 +316,7 @@ val3 = bit_string[0:2]
 
 Now that's clear, let's look at the `magic` file. If we translate that into a language we are more familiar with, let's Python, here is how it's gonna look like.
 
-```
+```python
 oz = lambda x: (x + int('110111', 2)) & 0xff
 oo = lambda x: x ^ 55
 zz = lambda x: ((x >> 3) & 0xff) | ((x << 5) & 0xff)
@@ -342,7 +342,7 @@ There is one problem while I was working on the bruteforcing tho, some character
 
 But here it is, the final script.
 
-```
+```python
 target = [182, 199, 159, 225, 210, 6, 246, 8, 172, 245, 6, 246, 8, 245, 199, 154, 225, 245, 182, 245, 165, 225, 245, 7, 237, 246, 7, 43, 246, 8, 248, 215]
 
 bbin = lambda x: format(x, 'b').zfill(8)
@@ -432,7 +432,7 @@ And we have just the thing, this challenge is pretty to the `Beginner` in the 20
 
 Also here is the decompiled main function of the binary.
 
-```
+```c
 undefined8 main(void)
 
 {
@@ -466,7 +466,7 @@ And we know the flag has the length of `0x2b` which is 43. Fun fact, when I work
 
 Then we can just start bruteforce this.
 
-```
+```python
 import angr
 import claripy
 

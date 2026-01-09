@@ -76,7 +76,7 @@ And here is the concole. To pull out console, click on the right of CMD icon.
 
 The rest is simple. The server is lagging hard so it took me multiple commands to make a single one work. But regardless the flag is just in the same directory. Here is series of command I used.
 
-```
+```python
 import os;os.popen('ls -la').read()
 open('flag.txt', 'r').read()
 ```
@@ -137,7 +137,7 @@ After clicking around and realized nothing will lead me to a new page, I decided
 
 Here is the header of HTTP request.
 
-```
+```http
 HTTP/1.1 200 OK
 Date: Thu, 30 Jul 2020 00:12:47 GMT
 Server: Apache/2.4.25 (Unix)
@@ -197,7 +197,7 @@ And yes, it works. Next is to build a script.
 
 ##### inj.py
 
-```
+```python
 #!/usr/bin/env python
 
 import requests as r

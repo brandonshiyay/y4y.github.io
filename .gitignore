@@ -7,7 +7,7 @@ _site/
 .bundle/
 vendor/bundle/
 
-export/
-export-md/
+export*/
 scripts/
-WordPress.2026-01-08.xml
+tools/
+WordPress*.xml

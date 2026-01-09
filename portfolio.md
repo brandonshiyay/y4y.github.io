@@ -23,13 +23,13 @@ Notable placements:
 
 | Contest Name | Platform | Placement | Findings |
 | --- | --- | --- | --- |
-| Mento | Sherlock | 1 | 1 Medium |
-| Goat Trading | Sherlock | 6 | 1 Medium |
-| LoopFi | C4 | 3 | 1 High |
-| Super Boring | Sherlock | 2 | 2 High |
-| Pareto USP, a credit-backed synthetic dollar | Sherlock | 1 | 1 Medium |
-| ZKP2P V2 | Sherlock | 4 | 1 High |
-| Rezerve Money | Sherlock | 15 | 4 High/3 Medium |
+| [Mento](https://audits.sherlock.xyz/contests/187) | Sherlock | 1 | 1 Medium |
+| [Goat Trading](https://audits.sherlock.xyz/contests/178) | Sherlock | 6 | 1 Medium |
+| [LoopFi](https://code4rena.com/audits/2024-05-loopfi) | C4 | 3 | 1 High |
+| [Super Boring](https://audits.sherlock.xyz/contests/360) | Sherlock | 2 | 2 High |
+| [Pareto USP, a credit-backed synthetic dollar](https://audits.sherlock.xyz/contests/920) | Sherlock | 1 | 1 Medium |
+| [ZKP2P V2](https://audits.sherlock.xyz/contests/805) | Sherlock | 4 | 1 High |
+| [Rezerve Money](https://audits.sherlock.xyz/contests/1134) | Sherlock | 15 | 4 High/3 Medium |
 
 Full contest profile can be checked here: [https://audits.sherlock.xyz/watson/y4y](https://audits.sherlock.xyz/watson/y4y)
 

@@ -37,7 +37,7 @@ Nowadays, most used Java compilers are `gradle`, `maven`, and `ant`. But for a d
 
 The syntax for `javac` is quite simple:
 
-```
+```bash
 javac <Java files to compile> -cp <external class path>
 ```
 
@@ -74,7 +74,7 @@ In the end, all things are just summing up to an easy-to-medium algorithm proble
 
 And here it is, below is the *kick ass algorithm* I wrote. By the way, it only works on Linux, nobody knows why.
 
-```
+```python
 #!/usr/bin/env python3
 
 import os
@@ -205,7 +205,7 @@ generateFile(libs, packages)
 
 Excuses my coding skills, but it works so who cares. The script will output the compile order in `source.txt`. Then with that, we can try to create a database with:
 
-```
+```html
 codeql database create -l java -s <project path> -c 'javac -cp <path to public library directory>  @source.txt'
 ```
 

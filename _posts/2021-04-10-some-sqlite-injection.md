@@ -25,7 +25,7 @@ Maybe it's just a coincidence, but I have been noticing a lot of SQLite Injectio
 
 The most obvious way to spot a SQL injection would be appending a `'` or `"` after whatever the value is. Like
 
-```
+```ini
 username=user1'&password=letmein"
 ```
 
@@ -39,7 +39,7 @@ That is to say, when `/**/` or `-- -` and other comment keywords are filtered.
 
 One example would be from the Sea Quills problem from Angstrom CTF 2021, here is the code which matters:
 
-```
+```sql
 post '/quills' do
         db = SQLite3::Database.new "quills.db"
         cols = params[:cols]
@@ -65,7 +65,7 @@ You see, the `lim` and `off` variable has to be a number, otherwise it would not
 
 In this case, we can use a null byte to bypass it, since null byte is always considered to be a string terminator. Then the query can be like
 
-```
+```ini
 lim=1&off=1&cols=flag+from+flagtable%00
 ```
 
@@ -83,7 +83,7 @@ I choose this because it's the hardest from the Web Gauntlet series.
 
 Here is the source code for the challenge.
 
-```
+```html
 <?php
 session_start();
 
@@ -115,19 +115,19 @@ The point of the challenge is to bypass authentication, so we don't need to leak
 
 We also see comment is blocked, and from the last section we know we can counter that with a null byte. The ideal query would be like
 
-```
+```sql
 select username, password from users where username='admin' //end of query.
 ```
 
 But `admin` is blocked, and we know we can't use usernames like `Admin` because that's a totally different user. The solution is to use hex representation and then unhex from that representation. Funny enough that SQLite has a `hex()` function but no `unhex()`. There is still a way to unhex thing though, that is using `X'<hex strings>'`, so we can convert the word `admin` to all hex, and then inject the query like
 
-```
+```sql
 select username, password from users where username=X'61646D696E' //end of query.
 ```
 
 We can also try to concat strings as the PHP code only block the work `admin`, so if we try `ad + min` it still works. In SQLite, the `||` operator does not mean `or`, it means concatenate strings… So we can also inject the query like this:
 
-```
+```sql
 select username, password from users where username='ad'||'min' //end of query.
 ```
 
@@ -143,7 +143,7 @@ When I was learning PHP, I saw that one phrase: 'Never trust any user input as a
 
 Imagine registering an account for some random website, and they don't really check for sensitive characters in the username, so we give it a username of `'||sqlite_version()||'`, and the entire would look like
 
-```
+```sql
 insert into users value (''||sqlite_version()||'', 'a_random_password')
 ```
 

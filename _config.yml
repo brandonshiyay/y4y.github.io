@@ -1,7 +1,7 @@
 title: "y4y"
 description: "Security research notes, writeups, and build logs."
-baseurl: ""
-url: ""
+baseurl: "/y4y.github.io"
+url: "https://brandonshiyay.github.io"
 permalink: /:year/:month/:day/:title/
 markdown: kramdown
 kramdown:

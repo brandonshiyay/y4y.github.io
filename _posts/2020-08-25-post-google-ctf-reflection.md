@@ -21,7 +21,7 @@ So Google CTF has concluded, and I was reading writeups for web challenges and h
 
 Essentially the solution is to post an object to the login page to get a authentication bypass. At my first glance I thought it was MongoDB auth bypass. But after reading the given source code I realized it was MySQL. The final payloads from various writeups were like:
 
-```
+```ini
 username=michelle&password[password]=1&csrf=
 
 csrf&username=michelle&password[username]=michelle
@@ -29,7 +29,7 @@ csrf&username=michelle&password[username]=michelle
 
 and in the backend the MySQL would look like:
 
-```
+```sql
 SELECT * FROM users WHERE username='michelle' AND password=`password`=1;
 
 SELECT * FROM users WHERE username='michelle' AND password=`username`='michelle';
@@ -49,7 +49,7 @@ In MySQL, when a string is compared with an integer, it will convert the string 
 
 So my final comparison result for my example query is 1, which will make the query like:
 
-```
+```sql
 select * from user where 1;
 ```
 
@@ -57,7 +57,7 @@ And always evaluate as truth and return results.
 
 Now, look back at the payloads used against the challenge. The first payload:
 
-```
+```sql
 SELECT * FROM users WHERE username='michelle' AND password=`password`=1;
 ```
 
@@ -65,7 +65,7 @@ The first part of where clause is `username='michelle'`, which will return 1 sin
 
 Next, the second payload:
 
-```
+```sql
 SELECT * FROM users WHERE username='michelle' AND password=`username`='michelle';
 ```
 

