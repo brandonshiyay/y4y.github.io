@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2021/01/18/bamboofox-ctf-2021-writeup/"
 guid: "http://y4y.space/?p=347"
 wordpress_id: 347
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Reverse Engineering"]
 ---
 
 {% raw %}

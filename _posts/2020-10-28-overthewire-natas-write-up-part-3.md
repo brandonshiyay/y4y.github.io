@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/10/28/overthewire-natas-write-up-part-3/"
 guid: "http://y4y.space/?p=277"
 wordpress_id: 277
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Web2"]
 ---
 
 {% raw %}

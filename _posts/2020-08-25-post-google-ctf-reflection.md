@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/08/25/post-google-ctf-reflection/"
 guid: "http://y4y.space/?p=127"
 wordpress_id: 127
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Misc"]
 ---
 
 {% raw %}

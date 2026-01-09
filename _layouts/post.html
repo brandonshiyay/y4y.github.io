@@ -12,6 +12,9 @@ layout: default
       {% if page.categories %}
         <span>{{ page.categories | join: ", " }}</span>
       {% endif %}
+      {% if page.tags %}
+        <span>Tags: {{ page.tags | join: ", " }}</span>
+      {% endif %}
     </div>
   </header>
 

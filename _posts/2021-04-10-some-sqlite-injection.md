@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2021/04/10/some-sqlite-injection/"
 guid: "https://y4y.space/?p=392"
 wordpress_id: 392
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Web2", "Web Security"]
 ---
 
 {% raw %}

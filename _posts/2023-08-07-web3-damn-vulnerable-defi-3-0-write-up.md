@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2023/08/07/web3-damn-vulnerable-defi-3-0-write-
 guid: "https://y4y.space/?p=470"
 wordpress_id: 470
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Web3", "CTF Write Up"]
 ---
 
 {% raw %}

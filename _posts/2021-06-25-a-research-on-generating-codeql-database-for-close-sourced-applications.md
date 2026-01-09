@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2021/06/25/a-research-on-generating-codeql-data
 guid: "https://y4y.space/?p=413"
 wordpress_id: 413
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Misc"]
 ---
 
 {% raw %}

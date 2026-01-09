@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2021/01/03/two-easy-problems-from-grimmcon-ctf/
 guid: "http://y4y.space/?p=340"
 wordpress_id: 340
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Pwn"]
 ---
 
 {% raw %}

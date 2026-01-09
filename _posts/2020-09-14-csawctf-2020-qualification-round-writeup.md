@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/09/14/csawctf-2020-qualification-round-wri
 guid: "http://y4y.space/?p=186"
 wordpress_id: 186
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up"]
 ---
 
 {% raw %}

@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/08/02/file-inclusion-and-directory-travers
 guid: "http://y4y.space/?p=118"
 wordpress_id: 118
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Web2", "Web Security"]
 ---
 
 {% raw %}

@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/08/31/fword-ctf-writeup/"
 guid: "http://y4y.space/?p=149"
 wordpress_id: 149
 parent_id: 0
-categories: ["CTF"]
+categories: ["CTF Write Up", "Pwn", "Reverse Engineering"]
 ---
 
 {% raw %}

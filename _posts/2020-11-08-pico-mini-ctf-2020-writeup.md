@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/11/08/pico-mini-ctf-2020-writeup/"
 guid: "http://y4y.space/?p=299"
 wordpress_id: 299
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Pwn", "Reverse Engineering"]
 ---
 
 {% raw %}

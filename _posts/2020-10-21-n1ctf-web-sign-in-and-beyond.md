@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/10/21/n1ctf-web-sign-in-and-beyond/"
 guid: "http://y4y.space/?p=214"
 wordpress_id: 214
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Web2"]
 ---
 
 {% raw %}

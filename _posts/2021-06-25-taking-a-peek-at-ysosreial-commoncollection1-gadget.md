@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2021/06/25/taking-a-peek-at-ysosreial-commoncol
 guid: "https://y4y.space/?p=405"
 wordpress_id: 405
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Web Security"]
 ---
 
 {% raw %}

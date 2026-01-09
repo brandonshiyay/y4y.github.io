@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/06/27/redpwn-ctf-2020-web-pastebin-challen
 guid: "http://y4y.space/?p=83"
 wordpress_id: 83
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up", "Web2"]
 ---
 
 {% raw %}

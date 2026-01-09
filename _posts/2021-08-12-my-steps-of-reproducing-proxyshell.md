@@ -13,7 +13,8 @@ original_url: "https://y4y.space/2021/08/12/my-steps-of-reproducing-proxyshell/"
 guid: "https://y4y.space/?p=418"
 wordpress_id: 418
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Web Security", "Web2"]
+tags: ["CVE Analysis"]
 ---
 
 {% raw %}

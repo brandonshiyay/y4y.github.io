@@ -13,7 +13,7 @@ original_url: "https://y4y.space/2020/08/02/hacktivitycon-ctf-2020-writeup/"
 guid: "http://y4y.space/?p=96"
 wordpress_id: 96
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["CTF Write Up"]
 ---
 
 {% raw %}

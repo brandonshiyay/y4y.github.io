@@ -13,7 +13,8 @@ original_url: "https://y4y.space/2021/12/10/log4j-analysis-more-jndi-injection/"
 guid: "https://y4y.space/?p=441"
 wordpress_id: 441
 parent_id: 0
-categories: ["Uncategorized"]
+categories: ["Web Security", "Web2"]
+tags: ["CVE Analysis"]
 ---
 
 {% raw %}
