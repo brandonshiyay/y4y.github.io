@@ -40,10 +40,12 @@ List of contests I served as Judge
 | Contest Name | Platform | Type |
 | --- | --- | --- |
 | [Privacy Cash](https://audits.sherlock.xyz/contests/1160) | Sherlock | Rust/Solana/ZK |
+| [OpenCover Insured Vaults](https://audits.sherlock.xyz/contests/1222) | Sherlock | Solidity/EVM |
 
 ## Collaborative Audits
 
-| Protocol Name | Findings | Report | Type |
-| --- | --- | --- | --- |
-| MoatV3 | 2 Critical/2 High/6 Medium | https://getfailsafe.com/the-moats-v3-smart-contract-audit | Solidity/EVM |
+| Protocol Name | Findings | Date | Report | Type |
+| --- | --- | --- | --- | --- |
+| MoatV3 | 2 Critical/2 High/6 Medium | Dec 2025 | [Link](https://getfailsafe.com/the-moats-v3-smart-contract-audit) | Solidity/EVM |
+
 {% endraw %}
