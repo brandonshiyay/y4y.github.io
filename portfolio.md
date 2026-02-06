@@ -37,15 +37,17 @@ Full contest profile can be checked here: [https://audits.sherlock.xyz/watson/y4
 
 List of contests I served as Judge
 
-| Contest Name | Platform | Type |
-| --- | --- | --- |
-| [Privacy Cash](https://audits.sherlock.xyz/contests/1160) | Sherlock | Rust/Solana/ZK |
-| [OpenCover Insured Vaults](https://audits.sherlock.xyz/contests/1222) | Sherlock | Solidity/EVM |
+| Contest Name | Platform | Date | Type |
+| --- | --- | --- | --- |
+| [Privacy Cash](https://audits.sherlock.xyz/contests/1160) | Sherlock | Nov 2025 | Rust/Solana/ZK |
+| [OpenCover Insured Vaults](https://audits.sherlock.xyz/contests/1222) | Sherlock | Jan 2026 | Solidity/EVM |
 
 ## Collaborative Audits
 
 | Protocol Name | Findings | Date | Report | Type |
 | --- | --- | --- | --- | --- |
-| MoatV3 | 2 Critical/2 High/6 Medium | Dec 2025 | [Link](https://getfailsafe.com/the-moats-v3-smart-contract-audit) | Solidity/EVM |
+| MoatV3 | 2 Critical/2 High/8 Medium | Dec 2025 | [Link](https://getfailsafe.com/the-moats-v3-smart-contract-audit) | Solidity/EVM |
+| Redacted | TBA | Jan 2026 | TBA | Rust/CosmWASM |
+| Rujira Trade FIN | TBA | Jan 2026 | TBA | Rust/CosmWASM |
 
 {% endraw %}
