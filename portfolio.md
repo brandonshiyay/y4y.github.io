@@ -42,7 +42,7 @@ List of contests I served as Judge
 | [Privacy Cash](https://audits.sherlock.xyz/contests/1160) | Sherlock | Nov 2025 | Rust/Solana/ZK |
 | [OpenCover Insured Vaults](https://audits.sherlock.xyz/contests/1222) | Sherlock | Jan 2026 | Solidity/EVM |
 
-## Collaborative Audits
+## Private/Collaborative Audits
 
 | Protocol Name | Findings | Date | Report | Type |
 | --- | --- | --- | --- | --- |
@@ -50,5 +50,11 @@ List of contests I served as Judge
 | Redacted | 1 High | Jan 2026 | [Link](https://getfailsafe.com/redacted-smart-contract-audit) | Rust/CosmWASM |
 | Rujira Trade FIN | TBA | Jan 2026 | TBA | Rust/CosmWASM |
 |Diffusal-Blade | TBA | Feb 2026 | TBA | Solidity/EVM |
+
+## Preception - My Own AI Audit Tool
+
+| Protocol Name | Preception Findings | Final Findings | Coverage | Report | Preception Report |
+| --- | --- | --- | --- | --- | --- |
+| Rujira bRune | TBA | TBA | TBA | TBA | TBA |
 
 {% endraw %}
