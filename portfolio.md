@@ -48,7 +48,7 @@ List of contests I served as Judge
 | --- | --- | --- | --- | --- |
 | MoatV3 | 2 Critical/2 High/8 Medium | Dec 2025 | [Link](https://getfailsafe.com/the-moats-v3-smart-contract-audit) | Solidity/EVM |
 | Redacted | 1 High | Jan 2026 | [Link](https://getfailsafe.com/redacted-smart-contract-audit) | Rust/CosmWASM |
-| Rujira Trade FIN | TBA | Jan 2026 | TBA | Rust/CosmWASM |
+| Rujira Trade FIN | 2 Critical/1 High/5 Medium | Jan 2026 | [Link](https://getfailsafe.com/rujira-fin-smart-contract-audit) | Rust/CosmWASM |
 |Diffusal-Blade | TBA | Feb 2026 | TBA | Solidity/EVM |
 
 ## Preception - My Own AI Audit Tool
