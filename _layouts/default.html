@@ -3,10 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0a0f">
     <title>
       {% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}
     </title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/rouge.css' | relative_url }}">
   </head>
@@ -15,10 +18,10 @@
       <div class="shell">
         <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
         <nav class="site-nav">
-          <a href="{{ '/' | relative_url }}">Home</a>
-          <a href="{{ '/about/' | relative_url }}">About</a>
-          <a href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
-          <a href="{{ '/cve-analysis/' | relative_url }}">CVE Analysis</a>
+          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+          <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+          <a href="{{ '/portfolio/' | relative_url }}"{% if page.url == '/portfolio/' %} aria-current="page"{% endif %}>Portfolio</a>
+          <a href="{{ '/cve-analysis/' | relative_url }}"{% if page.url == '/cve-analysis/' %} aria-current="page"{% endif %}>CVE Analysis</a>
         </nav>
       </div>
     </header>
