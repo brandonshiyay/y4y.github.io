@@ -23,13 +23,13 @@ Notable placements:
 
 | Contest Name | Platform | Placement | Findings | Type |
 | --- | --- | --- | --- | --- |
-| [Mento](https://audits.sherlock.xyz/contests/187) | Sherlock | 1 | 1 Medium | Solidity/EVM |
-| [Goat Trading](https://audits.sherlock.xyz/contests/178) | Sherlock | 6 | 1 Medium | Solidity/EVM |
-| [LoopFi](https://code4rena.com/audits/2024-05-loopfi) | C4 | 3 | 1 High | Solidity/EVM |
-| [Super Boring](https://audits.sherlock.xyz/contests/360) | Sherlock | 2 | 2 High | Solidity/EVM |
-| [Pareto USP, a credit-backed synthetic dollar](https://audits.sherlock.xyz/contests/920) | Sherlock | 1 | 1 Medium | Solidity/EVM |
-| [ZKP2P V2](https://audits.sherlock.xyz/contests/805) | Sherlock | 4 | 1 High | Solidity/EVM |
-| [Rezerve Money](https://audits.sherlock.xyz/contests/1134) | Sherlock | 15 | 4 High/3 Medium | Solidity/EVM |
+| [Mento](https://audits.sherlock.xyz/contests/187) | Sherlock | <span class="place place-1">1st</span> | 1 Medium | Solidity/EVM |
+| [Goat Trading](https://audits.sherlock.xyz/contests/178) | Sherlock | 6th | 1 Medium | Solidity/EVM |
+| [LoopFi](https://code4rena.com/audits/2024-05-loopfi) | C4 | <span class="place place-3">3rd</span> | 1 High | Solidity/EVM |
+| [Super Boring](https://audits.sherlock.xyz/contests/360) | Sherlock | <span class="place place-2">2nd</span> | 2 High | Solidity/EVM |
+| [Pareto USP](https://audits.sherlock.xyz/contests/920) | Sherlock | <span class="place place-1">1st</span> | 1 Medium | Solidity/EVM |
+| [ZKP2P V2](https://audits.sherlock.xyz/contests/805) | Sherlock | 4th | 1 High | Solidity/EVM |
+| [Rezerve Money](https://audits.sherlock.xyz/contests/1134) | Sherlock | 15th | 4H / 3M | Solidity/EVM |
 
 Full contest profile can be checked here: [https://audits.sherlock.xyz/watson/y4y](https://audits.sherlock.xyz/watson/y4y)
 
@@ -46,19 +46,19 @@ List of contests I served as Judge
 
 | Protocol Name | Findings | Date | Report | Type |
 | --- | --- | --- | --- | --- |
-| MoatV3 | 2 Critical/2 High/8 Medium | Dec 2025 | [Link](https://getfailsafe.com/the-moats-v3-smart-contract-audit) | Solidity/EVM |
-| Redacted | 1 High | Jan 2026 | [Link](https://getfailsafe.com/redacted-smart-contract-audit) | Rust/CosmWASM |
-| Rujira Trade FIN | 2 Critical/1 High/5 Medium | Jan 2026 | [Link](https://getfailsafe.com/rujira-fin-smart-contract-audit) | Rust/CosmWASM |
-|Diffusal-Blade | - | Feb 2026 | - | Solidity/EVM |
-|Diffusal-Blade Update #1 | - | March 2026 | - | Solidity/EVM |
-|veRAAC | TBA | March 2026 | TBA | Solidity/EVM |
+| MoatV3 | 2C / 2H / 8M | Dec 2025 | [Link](https://getfailsafe.com/the-moats-v3-smart-contract-audit) | Solidity/EVM |
+| Redacted | 1H | Jan 2026 | [Link](https://getfailsafe.com/redacted-smart-contract-audit) | Rust/CosmWASM |
+| Rujira Trade FIN | 2C / 1H / 5M | Jan 2026 | [Link](https://getfailsafe.com/rujira-fin-smart-contract-audit) | Rust/CosmWASM |
+| Diffusal-Blade | - | Feb 2026 | - | Solidity/EVM |
+| Diffusal-Blade Update #1 | - | March 2026 | - | Solidity/EVM |
+| veRAAC | TBA | March 2026 | TBA | Solidity/EVM |
 
 ## Preception - My Own AI Audit Tool
 
-| Protocol Name | Preception Findings | Final Findings | Coverage | Report | Preception Report | Note |
-| --- | --- | --- | --- | --- | --- | --- |
-| Intuition | 2 Medium | 1 Medium | 1/1 Medium | TBA | TBA | - |
-| Current Finance | 5 Medium | 2 High/4 Medium | 0/2 High 3/4 Medium | TBA | TBA | Found 2 additional, but didn't submit. Could've been 1/2 High 4/4 Medium. |
-| Injective | 7 Medium | TBA | TBA | TBA | TBA |
+| Protocol | Preception | Final | Coverage | Note |
+| --- | --- | --- | --- | --- |
+| Intuition | 2M | 1M | 1/1 M | - |
+| Current Finance | 5M | 2H / 4M | 0/2H 3/4M | Found 2 additional, but didn't submit. Could've been 1/2H 4/4M. |
+| Injective | 7M | TBA | TBA | - |
 
 {% endraw %}
