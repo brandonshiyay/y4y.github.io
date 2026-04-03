@@ -2,41 +2,102 @@
 layout: default
 ---
 <section class="hero">
-  <p class="eyebrow">⌬ y4y</p>
-  <h1 class="hero-title">Smart Contract Security Researcher<br>& Sherlock Lead Judge</h1>
-  <p class="hero-subtitle">
-    Previously in web application security and browser exploitation — analyzing CVEs like ProxyShell and Log4j, 
-    building exploit toolkits, and reproducing V8 type confusion bugs. Now focused on securing DeFi protocols 
-    through competitive audits, collaborative reviews, and independent research.
+  <div class="hero-label">y4y</div>
+  <h1 class="hero-title">Smart Contract Security Researcher <br>& <span class="gradient">Sherlock Lead Judge</span></h1>
+  <p class="hero-sub">
+    From web app security & browser exploitation to securing DeFi protocols.
+    Analyzing CVEs, building exploits, and auditing smart contracts.
   </p>
-  <div class="hero-actions">
-    <a class="button primary" href="{{ '/about/' | relative_url }}">About me →</a>
-    <a class="button ghost" href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
+  <div class="hero-btns">
+    <a class="btn btn-primary" href="{{ '/about/' | relative_url }}">About me →</a>
+    <a class="btn btn-ghost" href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
   </div>
 </section>
 
 {{ content }}
 
-<section class="post-list">
-  <div class="section-header">
-    <h2>Latest posts</h2>
-    <span class="muted">{{ site.posts | size }} total</span>
+<!-- Bento Grid -->
+<div class="bento">
+
+  <!-- Top contest results (wide card) -->
+  <div class="bento-card span-2 highlight">
+    <div class="card-label">🏆 Top Contest Results</div>
+    <table class="bento-table">
+      <thead>
+        <tr><th>Contest</th><th>Platform</th><th>Place</th><th>Findings</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://audits.sherlock.xyz/contests/187">Mento</a></td>
+          <td>Sherlock</td>
+          <td><span class="placement gold">1st</span></td>
+          <td>1 Medium</td>
+        </tr>
+        <tr>
+          <td><a href="https://audits.sherlock.xyz/contests/360">Super Boring</a></td>
+          <td>Sherlock</td>
+          <td><span class="placement">2nd</span></td>
+          <td>2 High</td>
+        </tr>
+        <tr>
+          <td><a href="https://code4rena.com/audits/2024-05-loopfi">LoopFi</a></td>
+          <td>C4</td>
+          <td><span class="placement">3rd</span></td>
+          <td>1 High</td>
+        </tr>
+        <tr>
+          <td><a href="https://audits.sherlock.xyz/contests/920">Pareto USP</a></td>
+          <td>Sherlock</td>
+          <td><span class="placement gold">1st</span></td>
+          <td>1 Medium</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="post-grid">
-    {% for post in site.posts %}
-      <article class="post-card" style="--i: {{ forloop.index0 }};">
-        <div class="post-card-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%b %-d, %Y" }}
-          </time>
-          {% if post.categories %}
-            <span>{{ post.categories | join: ", " }}</span>
-          {% endif %}
-        </div>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
-        <a class="post-card-link" href="{{ post.url | relative_url }}">Read more</a>
-      </article>
-    {% endfor %}
+
+  <!-- Background card (tall, right side) -->
+  <div class="bento-card span-row">
+    <div class="card-label">Background</div>
+    <h3>Web2 → Web3</h3>
+    <p style="margin-bottom: 16px;">Started in web application security — analyzing CVEs like ProxyShell & Log4j, building exploit toolkits, and reproducing V8 type confusion bugs.</p>
+    <p style="margin-bottom: 16px;">Transitioned to smart contract security in 2023. Now focused on competitive audits and collaborative protocol reviews.</p>
+    <p><a href="{{ '/about/' | relative_url }}">Read full story →</a></p>
   </div>
-</section>
+
+  <!-- Private audits -->
+  <div class="bento-card">
+    <div class="card-label">🔒 Private Audits</div>
+    <h3>Collaborative Reviews</h3>
+    <p style="margin-bottom: 12px;">MoatV3 — 2C / 2H / 8M</p>
+    <p style="margin-bottom: 12px;">Rujira Trade FIN — 2C / 1H / 5M</p>
+    <p><a href="{{ '/portfolio/' | relative_url }}">View all reports →</a></p>
+  </div>
+
+  <!-- Judging -->
+  <div class="bento-card">
+    <div class="card-label">⚖️ Lead Judge</div>
+    <h3>Sherlock Contests</h3>
+    <p style="margin-bottom: 12px;">Privacy Cash — Rust/Solana/ZK</p>
+    <p style="margin-bottom: 12px;">OpenCover Insured Vaults — Solidity</p>
+    <p><a href="{{ '/portfolio/' | relative_url }}">View judging history →</a></p>
+  </div>
+
+</div>
+
+<!-- Recent Posts (compact list) -->
+<div class="section-title">
+  <span>Recent Writeups</span>
+  <a class="see-all" href="{{ '/blog/' | relative_url }}">View all {{ site.posts | size }} posts →</a>
+</div>
+
+{% for post in site.posts limit:6 %}
+<a class="post-list-item" href="{{ post.url | relative_url }}">
+  <span>
+    <span class="post-title">{{ post.title }}</span>
+    {% if post.categories.first %}
+      <span class="post-tag">{{ post.categories.first }}</span>
+    {% endif %}
+  </span>
+  <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
+</a>
+{% endfor %}
