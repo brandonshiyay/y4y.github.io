@@ -55,10 +55,10 @@ List of contests I served as Judge
 
 ## Preception - My Own AI Audit Tool
 
-| Protocol Name | Preception Findings | Final Findings | Coverage | Report | Preception Report |
-| --- | --- | --- | --- | --- | --- |
-| Intuition | 2 Medium | TBA | TBA | TBA | TBA |
-| Current Finance | 5 Medium | TBA | TBA | TBA | TBA |
+| Protocol Name | Preception Findings | Final Findings | Coverage | Report | Preception Report | Note |
+| --- | --- | --- | --- | --- | --- | --- |
+| Intuition | 2 Medium | 1 Medium | 1/1 Medium | TBA | TBA | - |
+| Current Finance | 5 Medium | 2 High/4 Medium | 0/2 High 3/4 Medium | TBA | TBA | Found 2 additional, but didn't submit. Could've been 1/2 High 4/4 Medium. |
 | Injective | 7 Medium | TBA | TBA | TBA | TBA |
 
 {% endraw %}
